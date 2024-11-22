@@ -4,9 +4,9 @@ const cors = require('cors');
 require('dotenv').config();
 
 // Import routes
-const userRoutes = require('./routes/userRoutes');
-const ticketRoutes = require('./routes/ticketRoutes'); // Ticket routes
-const rewardRoutes = require('./routes/rewardRoutes'); // Reward routes
+const userRoutes = require('./routes/userRoutes'); // User management routes
+const ticketRoutes = require('./routes/ticketRoutes'); // Ticket management routes
+const rewardRoutes = require('./routes/rewardRoutes'); // Reward management routes
 
 const app = express();
 
@@ -15,9 +15,9 @@ app.use(cors());
 app.use(express.json());
 
 // Register routes
-app.use('/api/users', userRoutes); // User management routes
-app.use('/api/tickets', ticketRoutes); // Ticket management routes
-app.use('/api/rewards', rewardRoutes); // Reward management routes
+app.use('/api/users', userRoutes); // User management
+app.use('/api/tickets', ticketRoutes); // Ticket management
+app.use('/api/rewards', rewardRoutes); // Reward management
 
 // MongoDB connection
 mongoose
