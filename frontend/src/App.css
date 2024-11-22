@@ -1,0 +1,97 @@
+/* General App Styling */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+    color: #333;
+  }
+  
+  h1, h2 {
+    color: #007bff;
+    text-align: center;
+  }
+  
+  /* Dashboard Layout */
+  .dashboard-container {
+    width: 90%;
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+  }
+  
+  .dashboard-tabs {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  
+  .dashboard-tabs button {
+    padding: 10px 20px;
+    margin: 0 10px;
+    background-color: #ccc;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .dashboard-tabs button.active {
+    background-color: #007bff;
+    color: #fff;
+  }
+  
+  /* Table Styling */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+  }
+  
+  table th, table td {
+    text-align: left;
+    padding: 12px;
+    border: 1px solid #ddd;
+  }
+  
+  table th {
+    background-color: #007bff;
+    color: #fff;
+  }
+  
+  table tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  table tr:hover {
+    background-color: #f1f1f1;
+  }
+  
+  button {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  button.respond {
+    background-color: #28a745;
+    color: #fff;
+  }
+  
+  button.resolve {
+    background-color: #ffc107;
+    color: #fff;
+  }
+  
+  button.deactivate, button.activate {
+    background-color: #dc3545;
+    color: #fff;
+  }
+  
+  button:hover {
+    opacity: 0.8;
+  }
+  
