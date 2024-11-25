@@ -7,6 +7,7 @@ require('dotenv').config();
 const userRoutes = require('./routes/userRoutes'); // User management routes
 const ticketRoutes = require('./routes/ticketRoutes'); // Ticket management routes
 const rewardRoutes = require('./routes/rewardRoutes'); // Reward management routes
+const contentRoutes = require('./routes/contentRoutes'); // Content management routes
 
 const app = express();
 
@@ -18,6 +19,7 @@ app.use(express.json());
 app.use('/api/users', userRoutes); // User management
 app.use('/api/tickets', ticketRoutes); // Ticket management
 app.use('/api/rewards', rewardRoutes); // Reward management
+app.use('/api/content', contentRoutes); // Content management
 
 // MongoDB connection
 mongoose
