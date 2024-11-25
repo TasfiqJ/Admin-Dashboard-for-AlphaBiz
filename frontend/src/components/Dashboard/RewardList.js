@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 const RewardList = () => {
+  // State for storing the list of rewards
   const [rewards, setRewards] = useState([
     {
       _id: "1",
@@ -22,6 +23,7 @@ const RewardList = () => {
     },
   ]);
 
+  // State for storing redemption requests
   const [redemptions, setRedemptions] = useState([
     {
       _id: "1",
@@ -37,6 +39,7 @@ const RewardList = () => {
     },
   ]);
 
+  // State for storing user details
   const [users, setUsers] = useState([
     {
       _id: "67400c934e73828bf10d8196",
@@ -54,18 +57,22 @@ const RewardList = () => {
     },
   ]);
 
+  // State for storing a new reward being added
   const [newReward, setNewReward] = useState({ name: '', pointsRequired: '', description: '' });
 
+  // Function to add a new reward
   const addReward = () => {
-    const newRewardData = { ...newReward, _id: Date.now().toString() }; // Generate fake ID
-    setRewards([...rewards, newRewardData]);
-    setNewReward({ name: '', pointsRequired: '', description: '' });
+    const newRewardData = { ...newReward, _id: Date.now().toString() }; // Generate a fake unique ID
+    setRewards([...rewards, newRewardData]); // Add the new reward to the list
+    setNewReward({ name: '', pointsRequired: '', description: '' }); // Clear the form
   };
 
+  // Function to delete a reward by its ID
   const deleteReward = (id) => {
-    setRewards(rewards.filter((reward) => reward._id !== id));
+    setRewards(rewards.filter((reward) => reward._id !== id)); // Remove the reward from the list
   };
 
+  // Function to adjust loyalty points for a specific user
   const adjustPoints = (userId, points) => {
     setUsers(
       users.map((user) =>
@@ -74,6 +81,7 @@ const RewardList = () => {
     );
   };
 
+  // Function to update the status of a redemption request
   const updateRedemptionStatus = (id, status) => {
     setRedemptions(
       redemptions.map((redemption) =>
@@ -84,41 +92,42 @@ const RewardList = () => {
 
   return (
     <div>
+      {/* Header for Rewards Management */}
       <h2>Rewards Management</h2>
 
-      {/* Rewards Catalog */}
+      {/* Section to add a new reward */}
       <div>
         <h3>Rewards Catalog</h3>
         <input
           type="text"
-          placeholder="Name"
+          placeholder="Name" // Input for reward name
           value={newReward.name}
           onChange={(e) => setNewReward({ ...newReward, name: e.target.value })}
         />
         <input
           type="number"
-          placeholder="Points Required"
+          placeholder="Points Required" // Input for points required to redeem the reward
           value={newReward.pointsRequired}
           onChange={(e) => setNewReward({ ...newReward, pointsRequired: e.target.value })}
         />
         <input
           type="text"
-          placeholder="Description"
+          placeholder="Description" // Input for reward description
           value={newReward.description}
           onChange={(e) => setNewReward({ ...newReward, description: e.target.value })}
         />
-        <button onClick={addReward}>Add Reward</button>
+        <button onClick={addReward}>Add Reward</button> {/* Button to add reward */}
         <ul>
           {rewards.map((reward) => (
             <li key={reward._id}>
               {reward.name} - {reward.pointsRequired} points
-              <button onClick={() => deleteReward(reward._id)}>Delete</button>
+              <button onClick={() => deleteReward(reward._id)}>Delete</button> {/* Button to delete reward */}
             </li>
           ))}
         </ul>
       </div>
 
-      {/* Adjust Points */}
+      {/* Section to adjust loyalty points for users */}
       <div>
         <h3>Adjust Loyalty Points</h3>
         <table>
@@ -132,12 +141,12 @@ const RewardList = () => {
           <tbody>
             {users.map((user) => (
               <tr key={user._id}>
-                <td>{`${user.firstName} ${user.lastName}`}</td>
-                <td>{user.loyaltyPoints}</td>
+                <td>{`${user.firstName} ${user.lastName}`}</td> {/* Display user's full name */}
+                <td>{user.loyaltyPoints}</td> {/* Display user's loyalty points */}
                 <td>
                   <button
                     onClick={() =>
-                      adjustPoints(user._id, prompt('Enter new points:'))
+                      adjustPoints(user._id, prompt('Enter new points:')) // Prompt to enter new points
                     }
                   >
                     Adjust Points
@@ -149,7 +158,7 @@ const RewardList = () => {
         </table>
       </div>
 
-      {/* Redemption Requests */}
+      {/* Section for redemption requests */}
       <div>
         <h3>Redemption Requests</h3>
         <table>
@@ -164,9 +173,9 @@ const RewardList = () => {
           <tbody>
             {redemptions.map((redemption) => (
               <tr key={redemption._id}>
-                <td>{redemption.userId?.email}</td>
-                <td>{redemption.rewardId?.name}</td>
-                <td>{redemption.status}</td>
+                <td>{redemption.userId?.email}</td> {/* Display user email */}
+                <td>{redemption.rewardId?.name}</td> {/* Display reward name */}
+                <td>{redemption.status}</td> {/* Display redemption status */}
                 <td>
                   <button onClick={() => updateRedemptionStatus(redemption._id, 'Approved')}>
                     Approve
